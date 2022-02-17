@@ -6,6 +6,8 @@ import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
+import views.html.Home.home
+
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -22,7 +24,24 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
    * a path of `/`.
    */
 
-  def index() = Action { implicit request: Request[AnyContent] =>
+  def index = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }
+
+  def about = Action { implicit request: Request[AnyContent] =>
+    Ok(s"""Hellooooooooooo""")
+  }
+
+  def welcome(name: String) = Action { implicit request: Request[AnyContent] =>
+    Ok(s"""Hellooooooooooo $name""")
+  }
+
+  def woop(name: String, lastname: String) = Action { implicit request: Request[AnyContent] =>
+    Ok(home.render(name,lastname))
+  }
+
+
+
+
+
 }
